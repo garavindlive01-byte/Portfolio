@@ -1,4 +1,4 @@
-/* General Reset */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,12 +6,14 @@
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #f0f0f0;
   line-height: 1.6;
-  background-color: #f9f9f9;
-  color: #333;
+  overflow-x: hidden;
 }
 
+/* Container */
 .container {
   width: 85%;
   max-width: 1000px;
@@ -21,75 +23,117 @@ body {
 
 /* Header */
 header {
-  background: #004080;
-  color: #fff;
-  padding: 30px 0;
   text-align: center;
+  padding: 50px 20px;
+  background: rgba(0,0,0,0.4);
+  border-bottom: 2px solid #00c6ff;
 }
 
 header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+  font-size: 3rem;
+  color: #00c6ff;
+  animation: glow 2s infinite alternate;
 }
 
 header a {
   color: #ffcc00;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 header a:hover {
-  text-decoration: underline;
+  color: #00c6ff;
 }
 
-/* Sections */
-section {
-  margin-bottom: 30px;
-}
-
+/* Section Titles */
 h2 {
-  border-bottom: 2px solid #004080;
-  padding-bottom: 5px;
+  font-size: 1.8rem;
   margin-bottom: 15px;
-  color: #004080;
+  color: #00c6ff;
 }
 
-ul {
-  list-style-type: disc;
-  margin-left: 20px;
+.underline {
+  position: relative;
 }
 
+.underline::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: #ffcc00;
+  left: 0;
+  bottom: -5px;
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* Skills Grid */
 .skills {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
 }
 
 .skills li {
-  background: #e6f0ff;
-  padding: 10px;
-  border-radius: 5px;
+  background: rgba(255,255,255,0.1);
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
-/* Job Experience */
-.job {
+.skills li:hover {
+  transform: translateY(-5px) scale(1.05);
+  background: rgba(0,198,255,0.2);
+}
+
+/* Job Cards */
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 10px;
   margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.job h3 {
-  color: #333;
-  margin-bottom: 5px;
-}
-
-.job p {
-  font-style: italic;
-  margin-bottom: 10px;
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,198,255,0.4);
 }
 
 /* Footer */
 footer {
-  background: #004080;
-  color: #fff;
   text-align: center;
-  padding: 15px 0;
-  margin-top: 40px;
+  padding: 20px;
+  background: rgba(0,0,0,0.6);
+  border-top: 2px solid #00c6ff;
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.slide-down {
+  animation: slideDown 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #00c6ff; }
+  to { text-shadow: 0 0 20px #00c6ff, 0 0 30px #00c6ff; }
 }
